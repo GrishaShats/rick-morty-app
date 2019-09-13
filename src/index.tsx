@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from 'containers';
-import {  BrowserRouter as Router } from 'react-router-dom';
-
-/*
-import Menu from './components/Menu/Menu';
-*/
+import App from 'containers/App';
+import { BrowserRouter as Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <Router>

@@ -1,5 +1,8 @@
-import ApiClient from 'services/ApiClient';
+import { apiClientService } from 'services';
 
-const api = 'https://rickandmortyapi.com/api/';
-
-export const getCharacters = () => ApiClient.get(`${api}character/`,{headers: fsdfsd, body:fs });
+export const getCharacters = () => apiClientService.get('character', {
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    }
+});
