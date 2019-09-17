@@ -1,0 +1,30 @@
+.card-wrapper{
+  width:200px;
+  display: flex;
+  flex-flow: column wrap;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .80rem;
+  margin: 20px;
+  &__avatar{
+    img{
+      width: 200px;
+      height: 200px;
+      border-top-left-radius: .80rem;
+      border-top-right-radius: .80rem;
+      opacity: 1;
+      margin: 0px;
+      transition: opacity 0.5s ease 0s;
+    }
+  }
+  &__title{
+    margin:10px
+  }
+  &__body{
+    padding: 20px;
+  }
+  &__info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+  }
+}

@@ -4,8 +4,10 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import Home from 'containers/Home';
 import CharacterPage from 'containers/CharacterPage';
 import CharacterManager from 'containers/CharacterManager';
+
 import Menu from 'components/Menu/Menu';
 import Footer from 'components/Footer/Footer';
+
 import { getCharacters } from 'store/domains/characters/api';
 import { CardItem } from 'types'
 
@@ -25,10 +27,9 @@ export default class App extends React.Component<{}, State> {
       info: res.info,
       characters: res.results,
     });
-    console.log(this.state.characters)
   }
 
-  componentWillMount() {
+  componentWillMount(): void {
     getCharacters().then((res) => {
       this.setCharacters(JSON.parse(JSON.stringify(res)));
     });

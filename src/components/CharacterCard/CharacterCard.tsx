@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
 import { CardItem } from 'types';
+import './CharacterCard.scss';
 
 type CharacterCardProps = {
   key: number;
@@ -9,18 +9,27 @@ type CharacterCardProps = {
 
 const CharacterCard: React.StatelessComponent<CharacterCardProps> = (props: any) => {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={props.character.image} />
-      <Card.Body>
-        <Card.Title> {props.character.name} </Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the bulk of
-          the card's content.
-          </Card.Text>
-        <Button variant="primary">Delete</Button>
-        <Button variant="primary">Update</Button>
-      </Card.Body>
-    </Card>
+    <>
+      <div className='card-wrapper'>
+        <div className='card-wrapper__avatar'>
+          <img src={props.character.image}
+            alt={props.character.name} />
+          <div className='card-wrapper__title'>
+            {props.character.name}
+          </div>
+          <div className='card-wrapper__body'>
+            <div className='card-wrapper__info'>
+              <p>Status</p>
+              <span>{props.character.status}</span>
+            </div>
+            <div className='card-wrapper__info'>
+              <p>Species</p>
+              <span>{props.character.species}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

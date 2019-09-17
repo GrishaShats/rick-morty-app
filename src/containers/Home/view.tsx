@@ -1,22 +1,18 @@
 import * as React from 'react';
 import Header from 'components/Header/Header';
-import CharacterCard from 'components/CharacterCard/CharacterCard';
+import HomeWrapper from 'components/HomeWrapper/HomeWrapper'
 import { CardItem } from 'types'
 
-type HomeProps = {
+type HomeWrapperProps = {
   characters: CardItem[];
 }
 
-const Home: React.StatelessComponent<HomeProps> = (props: any) => {
-  const characters = props.characters;
+const Home: React.FC<HomeWrapperProps> = ({ characters }) => {
   return (
-    <>
+    <React.Fragment>
       <Header />
-      {characters.map((item: CardItem) =>
-        <CharacterCard key={item.id}
-          character={item} />
-      )}
-    </>
+      <HomeWrapper characters={characters} />
+    </React.Fragment>
   );
 };
 
