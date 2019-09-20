@@ -7,6 +7,7 @@ import { StoreState } from 'store/StoreState';
 
 import {
   handleGettingAllCharacters,
+  handleDeleteCharacter,
 
   selectCharacterInfo,
 } from 'store/domains/characters';
@@ -17,6 +18,7 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
+    handleDeleteCharacter,
     handleGettingAllCharacters,
   },
   dispatch,

@@ -32,7 +32,7 @@ export interface DeleteCharacterAction {
 }
 
 export interface DeleteCharacterFulfilledAction {
-  readonly payload: number;
+  readonly value: number;
   readonly type: ActionTypeKeys.DELETE_CHARACTER_FULFILLED;
 }
 

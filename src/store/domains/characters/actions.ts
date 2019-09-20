@@ -21,7 +21,7 @@ export const getAllCharacters: GetAllCharacters = () => ({
 
 export const deleteCharacter = (value: number) => ({
   value,
-  type: ActionTypeKeys.DELETE_CHARACTER,
+  type: ActionTypeKeys.DELETE_CHARACTER_FULFILLED,
 });
 
 export const handleGettingAllCharacters: HandleGettingAllCharacters = () =>
@@ -36,7 +36,7 @@ export const handleGettingAllCharacters: HandleGettingAllCharacters = () =>
 export const handleDeleteCharacter: HandleDeleteCharacter = value =>
   async dispatch => {
     try {
-      await dispatch(getAllCharacters());
+      await dispatch(deleteCharacter(value));
     } catch (error) {
       return Promise.reject(error);
     }
