@@ -1,16 +1,17 @@
 import React from 'react';
-import { CardItem } from 'types';
+
 import { getFilterCharacters } from 'store/domains/characters/api';
+import { CardItemType } from 'types';
 import './FilterCard.scss';
 
-type State = {
-  selectValue: string,
-  inputValue: string,
-  characters: CardItem[];
-};
+interface State {
+  selectValue: string;
+  inputValue: string;
+  characters: CardItemType[];
+}
 
-type Props = {
-  onCharactersChange: any,
+interface Props {
+  onCharactersChange: any;
 }
 
 export default class FilterCard extends React.Component<Props, State> {
@@ -64,4 +65,3 @@ export default class FilterCard extends React.Component<Props, State> {
     );
   }
 }
-

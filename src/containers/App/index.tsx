@@ -1,62 +1,28 @@
-import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
-import Home from 'containers/Home';
-import CharacterPage from 'containers/CharacterPage';
-import CharacterManager from 'containers/CharacterManager';
+import App from './view';
 
-import Menu from 'components/Menu/Menu';
-import Footer from 'components/Footer/Footer';
+import { StoreState } from 'store/StoreState';
 
-import { getCharacters } from 'store/domains/characters/api';
-import { CardItem } from 'types'
+import {
+  handleGettingAllCharacters,
 
-type State = {
-  info: object;
-  characters: CardItem[];
-};
+  selectCharacterInfo,
+} from 'store/domains/characters';
 
-export default class App extends React.Component<{}, State> {
-  state = {
-    info: {},
-    characters: [],
-  };
+const mapStateToProps = (state: StoreState) => ({
+  characters: selectCharacterInfo(state),
+});
 
-  setCharacters(res: any): void {
-    this.setState({
-      info: res.info,
-      characters: res.results,
-    });
-  }
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    handleGettingAllCharacters,
+  },
+  dispatch,
+);
 
-  componentWillMount(): void {
-    getCharacters().then((res) => {
-      this.setCharacters(JSON.parse(JSON.stringify(res)));
-    });
-  }
-
-  render() {
-    const characters = this.state.characters;
-
-    return (
-      <React.Fragment>
-        <Menu />
-        <Switch>
-          <Route exact path="/" render={routerProps => (
-            <Home {...routerProps} characters={characters} />
-          )} />
-          <Route path="/character" component={CharacterPage} />
-          <Route path="/manager" component={CharacterManager} />
-          <Redirect from='*' to='/' />
-        </Switch>
-        <Footer />
-      </React.Fragment>
-    );
-  }
-}
-
-
-
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

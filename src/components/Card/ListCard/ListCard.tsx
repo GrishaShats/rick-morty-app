@@ -1,24 +1,23 @@
 import React from 'react';
 
-import { CardItem } from 'types';
-import CharacterCard from 'components/CharacterCard/CharacterCard';
-import FilterCard from 'components/FilterCard/FilterCard';
+import CharacterCard from 'components/Card/CharacterCard';
+import FilterCard from 'components/Card/FilterCard';
 
-import './HomeWrapper.scss';
+import { CardItemType } from 'types';
+import './ListCard.scss';
 
-type HomeWrapperProps = {
-  characters: CardItem[];
+interface HomeWrapperProps {
+  characters: CardItemType[];
 }
 
 interface State {
-  characters: CardItem[] | null;
+  characters: CardItemType[] | null;
   // characters: any;
-};
+}
 
 export default class HomeWrapper extends React.Component<HomeWrapperProps, State> {
   constructor(props: HomeWrapperProps) {
     super(props);
-    console.log(this.props.characters, 'construct');
     this.state = {
       characters: null,
     }
@@ -32,11 +31,15 @@ export default class HomeWrapper extends React.Component<HomeWrapperProps, State
     }
   }
 
-  getFilteredCharacters = (filteredCharacters: CardItem[]): void => {
+  getFilteredCharacters = (filteredCharacters: CardItemType[]): void => {
     this.setState({
       characters: filteredCharacters,
     })
   }
+
+  // deleteCat = () => {
+  //   this.props.actions.deleteCat(this.props.characters)
+  // }
 
   render() {
     const { characters } = this.state;
@@ -46,7 +49,7 @@ export default class HomeWrapper extends React.Component<HomeWrapperProps, State
           onCharactersChange={this.getFilteredCharacters} />
         <div className='cards-wrapper'>
           {
-            characters && characters.map((item: CardItem) =>
+            characters && characters.map((item: CardItemType) =>
               <CharacterCard key={item.id}
                 character={item} />
             )

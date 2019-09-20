@@ -5,9 +5,9 @@
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .80rem;
   margin: 20px;
-  &__avatar{
+  &-avatar{
     img{
-      width: 200px;
+      width: 198px;
       height: 200px;
       border-top-left-radius: .80rem;
       border-top-right-radius: .80rem;
@@ -16,13 +16,13 @@
       transition: opacity 0.5s ease 0s;
     }
   }
-  &__title{
+  &-title{
     margin:10px
   }
-  &__body{
+  &-body{
     padding: 20px;
   }
-  &__info{
+  &-info{
     display: flex;
     flex-direction: row;
     justify-content: space-between

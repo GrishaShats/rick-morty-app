@@ -27,7 +27,7 @@ export class ApiClient implements IApiClient {
   defaults: { [key: string]: string } = {};
   apiHost: string;
 
-  constructor(apiHost: any) {
+  constructor(apiHost: string) {
     this.apiHost = apiHost;
 
     this.methods.forEach(method =>
