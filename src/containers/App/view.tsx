@@ -8,25 +8,12 @@ import Home from 'containers/Home';
 import CharacterPage from 'containers/CharacterPage';
 import CharacterManager from 'containers/CharacterManager';
 
-import { CardItemType } from 'types'
-import { HandleGettingAllCharacters } from 'store/domains';
-
-interface AppProps {
-  characters: CardItemType[];
-  handleGettingAllCharacters: HandleGettingAllCharacters;
-}
-
-const App: React.FC<AppProps> = ({ characters, handleGettingAllCharacters }) => {
-  React.useEffect(() => {
-    handleGettingAllCharacters();
-  }, [])
+const App: React.FC<{}> = () => {
   return (
     <React.Fragment>
       <Menu />
       <Switch>
-        <Route exact path="/" render={routerProps => (
-          <Home {...routerProps} characters={characters} />
-        )} />
+        <Route path="/" component={Home} />
         <Route path="/character" component={CharacterPage} />
         <Route path="/manager" component={CharacterManager} />
         <Redirect from='*' to='/' />

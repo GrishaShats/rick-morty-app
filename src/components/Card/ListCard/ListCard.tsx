@@ -6,24 +6,23 @@ import FilterCard from 'components/Card/FilterCard';
 import { CardItemType } from 'types';
 import './ListCard.scss';
 
-interface HomeWrapperProps {
+interface ListCardProps {
   characters: CardItemType[];
 }
 
 interface State {
   characters: CardItemType[] | null;
-  // characters: any;
 }
 
-export default class HomeWrapper extends React.Component<HomeWrapperProps, State> {
-  constructor(props: HomeWrapperProps) {
+export default class ListCard extends React.Component<ListCardProps, State> {
+  constructor(props: ListCardProps) {
     super(props);
     this.state = {
       characters: null,
     }
   }
 
-  componentDidUpdate(prevProps: HomeWrapperProps) {
+  componentDidUpdate(prevProps: ListCardProps) {
     if (prevProps.characters !== this.props.characters && !this.state.characters) {
       this.setState({
         characters: this.props.characters,
@@ -37,10 +36,6 @@ export default class HomeWrapper extends React.Component<HomeWrapperProps, State
     })
   }
 
-  // deleteCat = () => {
-  //   this.props.actions.deleteCat(this.props.characters)
-  // }
-
   render() {
     const { characters } = this.state;
     return (
@@ -51,11 +46,11 @@ export default class HomeWrapper extends React.Component<HomeWrapperProps, State
           {
             characters && characters.map((item: CardItemType) =>
               <CharacterCard key={item.id}
-                character={item} />
+                character={item} />,
             )
           }
         </div>
       </React.Fragment>
-    )
+    );
   }
-};
+}

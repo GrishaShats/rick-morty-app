@@ -1,19 +1,24 @@
 import * as React from 'react';
 
 import Header from 'components/Header/Header';
-import HomeWrapper from 'components/Card/ListCard/ListCard';
+import ListCard from 'components/Card/ListCard/ListCard';
 
-import { CardItemType } from 'types';
+import { CardItemType } from 'types'
+import { HandleGettingAllCharacters } from 'store/domains';
 
-interface HomeWrapperProps {
+interface HomeProps {
   characters: CardItemType[];
+  handleGettingAllCharacters: HandleGettingAllCharacters;
 }
 
-const Home: React.FC<HomeWrapperProps> = ({ characters }) => {
+const Home: React.FC<HomeProps> = ({ characters, handleGettingAllCharacters }) => {
+  React.useEffect(() => {
+    handleGettingAllCharacters();
+  }, [])
   return (
     <React.Fragment>
       <Header />
-      <HomeWrapper characters={characters} />
+      <ListCard characters={characters} />
     </React.Fragment>
   );
 };
