@@ -1,3 +1,3 @@
- import {CharacterManager} from './view';
+import { CharacterManager } from './view';
 
 export default CharacterManager;

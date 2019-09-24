@@ -9,16 +9,14 @@ const Background = styled.div`
   text-align: center;
 `;
 
-class Header extends React.Component {
-  render() {
-    return (
-      <Background className="background">
-        <h1 className="title">
-          The Rick And Morty
+const Header: React.FC<{}> = () => {
+  return (
+    <Background className="background">
+      <h1 className="title">
+        The Rick And Morty
         </h1>
-      </Background>
-    );
-  }
-}
+    </Background>
+  );
+};
 
 export default Header;

@@ -6,14 +6,23 @@ import Home from './view';
 import { StoreState } from 'store/StoreState';
 
 import {
+  createLoadingSelector,
+
+  CharactersActionTypeKeys,
+
   handleGettingAllCharacters,
   handleDeleteCharacter,
 
-  selectCharacterInfo,
-} from 'store/domains/characters';
+  selectCharactersInfo,
+} from 'store/domains';
+
+const loadingSelector = createLoadingSelector([
+  CharactersActionTypeKeys.GET_ALL_CHARACTERS,
+]);
 
 const mapStateToProps = (state: StoreState) => ({
-  characters: selectCharacterInfo(state),
+  isLoading: loadingSelector(state),
+  characters: selectCharactersInfo(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

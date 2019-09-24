@@ -1,32 +1,39 @@
 import * as React from 'react';
 
-import Header from 'components/Header/Header';
-import ListCard from 'components/Card/ListCard/ListCard';
+import Header from 'components/Header';
+import ListCard from 'components/Card/ListCard';
 
-import { CardItemType } from 'types'
-import { HandleGettingAllCharacters, HandleDeleteCharacter } from 'store/domains';
+import { HandleGettingAllCharacters, HandleDeleteCharacter, CardItemType } from 'store/domains';
+import { Spinner } from 'components/Spinner/Spinner';
+import { withSpinner } from 'components/Spinner/withSpinner';
+import { theme } from 'theme';
 
 interface HomeProps {
   characters: CardItemType[];
+  isLoading: boolean;
   handleGettingAllCharacters: HandleGettingAllCharacters;
   handleDeleteCharacter: HandleDeleteCharacter;
 }
 
+const LoadingListCard = withSpinner()(ListCard);
+
 const Home: React.FC<HomeProps> = ({
   characters,
+  isLoading,
   handleGettingAllCharacters,
   handleDeleteCharacter }) => {
   React.useEffect(() => {
     handleGettingAllCharacters();
   }, [])
   return (
-    <React.Fragment>
+    <div>
       <Header />
-      <ListCard
+      <LoadingListCard
+        isLoading={isLoading}
         characters={characters}
         handleDeleteCharacter={handleDeleteCharacter} />
-    </React.Fragment>
+    </div>
   );
 };
 
-export default Home;
+export default (Home);
