@@ -1,4 +1,51 @@
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import App from './view';
 
-export default App;
+import { StoreState } from 'store/StoreState';
+
+import {
+  createLoadingSelector,
+  filterSelectOptions,
+
+  CharactersActionTypeKeys,
+
+  handleGettingAllCharacters,
+  handleUpdateOneCharacter,
+  handleDeleteCharacter,
+  handleSetInitialForm,
+  handleToggleModal,
+  handleFilterCharacters,
+
+  selectFilterCharacters,
+  selectIsOpenModal,
+} from 'store/domains';
+
+const loadingSelector = createLoadingSelector([
+  CharactersActionTypeKeys.GET_ALL_CHARACTERS,
+]);
+
+const mapStateToProps = (state: StoreState) => ({
+  filterSelectOptions,
+  isLoading: loadingSelector(state),
+  characters: selectFilterCharacters(state),
+  isModalOpen: selectIsOpenModal(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    handleGettingAllCharacters,
+    handleUpdateOneCharacter,
+    handleDeleteCharacter,
+    handleToggleModal,
+    handleSetInitialForm,
+    handleFilterCharacters,
+  },
+  dispatch,
+);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

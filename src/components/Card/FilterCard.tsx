@@ -1,67 +1,80 @@
 import React from 'react';
+import { styled } from 'theme';
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 
-import { getFilterCharacters } from 'store/domains/characters/api';
-import { CardItemType } from 'types';
-import './FilterCard.scss';
+import { InputField } from 'components/Form';
+import { HandleFilterCharacters, filterSelectOptions, FilterOptionConsts } from 'store/domains';
+import { SelectField } from 'components/Form/Select';
+import { InputFieldType } from 'types';
 
-interface State {
-  selectValue: string;
-  inputValue: string;
-  characters: CardItemType[];
+const Wrapper = styled.div`
+  padding: 0 20px 0 20px;
+  .form-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .select-field {
+    width: 150px;
+    margin-right: 10px
+  }
+  .input-field {
+    margin-right: 20px
+  }
+`;
+
+export interface FilterCardProps {
+  buttonsDisabled?: boolean;
+  acceptButtonName?: string;
+  cancelButtonName?: string;
+  handleFilterCharacters: HandleFilterCharacters;
 }
 
-interface Props {
-  onCharactersChange: any;
-}
+type FilterCardAllProps = FilterCardProps & InjectedFormProps<{}, FilterCardProps>;
 
-export default class FilterCard extends React.Component<Props, State> {
-  state = {
-    selectValue: 'name',
-    inputValue: '',
-    characters: [],
-  };
-
-  handleChange = (event: any): void => {
-    const target = event.target;
-    if (target.name === 'select') {
-      this.setState({
-        selectValue: target.value,
-      });
-    } else if (target.name === 'input') {
-      this.setState({
-        inputValue: target.value,
-      });
-    }
-  }
-
-  handleSubmit = (event: any): void => {
-    const selectValue = this.state.selectValue.toLowerCase();
-    const inputValue = this.state.inputValue;
-    getFilterCharacters(selectValue, inputValue).then((res) => {
-      this.props.onCharactersChange(JSON.parse(JSON.stringify(res)).results);
-    });
-
-    event.preventDefault();
-  }
-
-  render() {
-    const inputValue = this.state.inputValue;
-    const selectValue = this.state.selectValue;
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <select
+const FilterCard: React.FC<FilterCardAllProps> = ({
+  handleFilterCharacters,
+}) => (
+    <Wrapper>
+      <form className="form-wrapper" >
+        <Field
+          onChange={
+            (_event: React.ChangeEvent, newData: InputFieldType) => {
+              const value = {
+                type: FilterOptionConsts.TYPE_PROP,
+                inputValue: newData.value,
+              }
+              handleFilterCharacters(value);
+            }
+          }
+          className="select-field"
+          id="select"
           name="select"
-          value={selectValue}
-          onChange={this.handleChange}>
-          <option value="Name">Name</option>
-          <option value="Status">Status</option>
-          <option value="Species">Species</option>
-          <option value="Type">Type</option>
-          <option value="Gender">Gender</option>
-        </select>
-        <input name="input" type="text" value={inputValue} onChange={this.handleChange} />
-        <input type="submit" value="Send" />
+          placeholder="Name"
+          component={SelectField}
+          options={filterSelectOptions}
+        />
+        <Field
+          onChange={
+            (_event: React.ChangeEvent, newData: string) => {
+              console.log(newData, 'filterInput');
+              const value = {
+                type: FilterOptionConsts.VALUE_PROP,
+                inputValue: newData,
+              }
+              handleFilterCharacters(value);
+            }
+          }
+          className="input-field"
+          id="input"
+          name="input"
+          placeholder="Enter name of card"
+          component={InputField}
+          isRequired={true}
+        />
       </form>
-    );
-  }
-}
+    </Wrapper >
+  );
+
+export default reduxForm<{}, FilterCardProps>({
+  form: 'filterForm',
+})(FilterCard);

@@ -3,16 +3,28 @@ import * as React from 'react';
 import Header from 'components/Header';
 import ListCard from 'components/Card/ListCard';
 
-import { HandleGettingAllCharacters, HandleDeleteCharacter, CardItemType } from 'store/domains';
-import { Spinner } from 'components/Spinner/Spinner';
+import {
+  HandleSetInitialForm,
+  HandleDeleteCharacter,
+  HandleToggleModal,
+  HandleUpdateOneCharacter,
+  CardItemType,
+  HandleFilterCharacters,
+} from 'store/domains';
+
+import { InputFieldType } from 'types';
 import { withSpinner } from 'components/Spinner/withSpinner';
-import { theme } from 'theme';
 
 interface HomeProps {
   characters: CardItemType[];
   isLoading: boolean;
-  handleGettingAllCharacters: HandleGettingAllCharacters;
+  handleUpdateOneCharacter: HandleUpdateOneCharacter;
   handleDeleteCharacter: HandleDeleteCharacter;
+  handleToggleModal: HandleToggleModal;
+  handleSetInitialForm: HandleSetInitialForm;
+  handleFilterCharacters: HandleFilterCharacters;
+  isModalOpen: boolean;
+  filterSelectOptions: InputFieldType[];
 }
 
 const LoadingListCard = withSpinner()(ListCard);
@@ -20,18 +32,28 @@ const LoadingListCard = withSpinner()(ListCard);
 const Home: React.FC<HomeProps> = ({
   characters,
   isLoading,
-  handleGettingAllCharacters,
-  handleDeleteCharacter }) => {
-  React.useEffect(() => {
-    handleGettingAllCharacters();
-  }, [])
+  handleUpdateOneCharacter,
+  handleDeleteCharacter,
+  handleToggleModal,
+  handleSetInitialForm,
+  handleFilterCharacters,
+  isModalOpen,
+  filterSelectOptions,
+}) => {
   return (
     <div>
       <Header />
       <LoadingListCard
         isLoading={isLoading}
         characters={characters}
-        handleDeleteCharacter={handleDeleteCharacter} />
+        handleDeleteCharacter={handleDeleteCharacter}
+        handleToggleModal={handleToggleModal}
+        handleUpdateOneCharacter={handleUpdateOneCharacter}
+        handleSetInitialForm={handleSetInitialForm}
+        handleFilterCharacters={handleFilterCharacters}
+        isModalOpen={isModalOpen}
+        filterSelectOptions={filterSelectOptions}
+      />
     </div>
   );
 };

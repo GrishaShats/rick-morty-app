@@ -1,5 +1,3 @@
-import { css } from 'styled-components';
-
 export const sizes = {
   desktop4K: 2560,
   desktopL: 1440,
@@ -18,16 +16,3 @@ export const getBreakpointsRange = (start: number, end: number) =>
     .map(el => (el / 16).toFixed(1) + 'em');
 
 type Media = Record<keyof typeof sizes, (l: TemplateStringsArray, ...p: object[]) => string>;
-
-// export const media = Object.keys(sizes).reduce(
-//   (acc, label) => {
-//     acc[label] = (...args: [TemplateStringsArray, string]) => css`
-//       @media (max-width: ${sizes[label] / 16}em) {
-//         ${css.apply(null, args)}
-//       }
-//     `;
-
-//     return acc;
-//   },
-//   {} as Media
-// );

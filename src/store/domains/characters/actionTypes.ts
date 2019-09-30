@@ -1,4 +1,4 @@
-import { CharactersInfo, CardItemType } from './types';
+import { CharactersInfo, CardItemType, FilterInputField } from './types';
 import { ApiResponse } from 'types';
 
 export enum ActionTypeKeys {
@@ -10,7 +10,13 @@ export enum ActionTypeKeys {
   GET_ONE_CHARACTER_FULFILLED = 'characters/GET_ONE_CHARACTER_FULFILLED',
   GET_ONE_CHARACTER_REJECTED = 'characters/GET_ONE_CHARACTER_REJECTED',
 
+  UPDATE_CHARACTER = 'characters/UPDATE_CHARACTER',
+
+  FILTER_CHARACTERS = 'characters/FILTER_CHARACTERS',
+
   DELETE_CHARACTER = 'characters/DELETE_CHARACTER',
+
+  SET_INITIAL_FORM = 'characters/SET_INITIAL_FORM',
 }
 
 export interface GetAllCharactersAction {
@@ -43,16 +49,34 @@ export interface GetOneCharacterRejectedAction {
   readonly type: ActionTypeKeys.GET_ONE_CHARACTER_REJECTED;
 }
 
+export interface UpdateCharacterAction {
+  readonly value: CardItemType;
+  readonly type: ActionTypeKeys.UPDATE_CHARACTER;
+}
+
+export interface SetCharacterFilterOptionAction {
+  readonly value: FilterInputField;
+  readonly type: ActionTypeKeys.FILTER_CHARACTERS;
+}
+
 export interface DeleteCharacterAction {
   readonly value: number;
   readonly type: ActionTypeKeys.DELETE_CHARACTER;
+}
+
+export interface SetInitialFormAction {
+  readonly value: number;
+  readonly type: ActionTypeKeys.SET_INITIAL_FORM;
 }
 
 export type CharactersActionTypes =
   | GetAllCharactersAction
   | GetAllCharactersFulfilledAction
   | GetAllCharactersRejectedAction
-  | DeleteCharacterAction
   | GetOneCharacterAction
   | GetOneCharacterFulfilledAction
-  | GetOneCharacterRejectedAction;
+  | GetOneCharacterRejectedAction
+  | UpdateCharacterAction
+  | DeleteCharacterAction
+  | SetInitialFormAction
+  | SetCharacterFilterOptionAction;

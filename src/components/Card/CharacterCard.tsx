@@ -2,6 +2,7 @@ import React from 'react';
 
 import { styled } from 'theme';
 import { Link } from 'react-router-dom';
+import { HandleToggleModal } from 'store/domains';
 
 const Wrapper = styled.div`
   width:200px;
@@ -40,6 +41,8 @@ interface CharacterCardProps {
   status: string;
   species: string;
   handleDeleteCharacter?: () => void;
+  handleSetInitialForm?: () => void;
+  handleToggleModal?: HandleToggleModal;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
@@ -49,15 +52,19 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   status,
   species,
   handleDeleteCharacter,
-}) => {
-
-  return (
+  handleSetInitialForm,
+  handleToggleModal,
+}) => (
     <React.Fragment>
       <Wrapper className='card-wrapper'>
         <div>
-          <Link to={`/character/${id}`}>
-            <img src={image} alt={name} />
-          </Link>
+          {handleDeleteCharacter ? (
+            <Link to={`/character/${id}`}>
+              <img src={image} alt={name} />
+            </Link>
+          ) : (
+              <img src={image} alt={name} />
+            )}
           <div className='title'>
             {name}
           </div>
@@ -79,11 +86,20 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
               Delete
             </button>
           }
-
+          {handleToggleModal &&
+            <button
+              onClick={() => {
+                handleToggleModal(true);
+                handleSetInitialForm();
+              }}
+              className="btn btn-default"
+            >
+              Update
+          </button>
+          }
         </div>
       </Wrapper>
     </React.Fragment>
   );
-};
 
 export default CharacterCard;

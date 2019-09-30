@@ -36,7 +36,7 @@ const Circle = styled.svg<CircleProps>`
   width: ${({ size }) => size ? (isNaN(Number(size)) ? size : `${size}px`) : '50px'};
   height: ${({ size }) => size ? (isNaN(Number(size)) ? size : `${size}px`) : '50px'};
   circle {
-    stroke: ${({ color, theme }) => color || 'red'};
+    stroke: ${({ color, theme }) => color || 'black'};
     stroke-linecap: round;
     stroke-dasharray: 45;
   }

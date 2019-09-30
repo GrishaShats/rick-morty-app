@@ -10,3 +10,8 @@ export type VoidPromiseThunk = () => Thunk<Promise<void>>;
 export type VoidThunk = () => Thunk<void>;
 
 export type ApiResponse = SuperagentApiResponse;
+
+export interface InputFieldType {
+  label: string;
+  value: string;
+}

@@ -10,10 +10,16 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const Footer: React.FC<{}> = () => {
+interface FooterProps {
+  charactersLength: number;
+}
+
+const Footer: React.FC<FooterProps> = ({
+  charactersLength,
+}) => {
   return (
     <Wrapper>
-      <p>Footer</p>
+      <p>Characters: {charactersLength}</p>
     </Wrapper >
   );
 };
