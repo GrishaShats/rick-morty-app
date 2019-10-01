@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { styled } from 'theme';
-import { Link } from 'react-router-dom';
+
 import { HandleToggleModal } from 'store/domains';
 
 const Wrapper = styled.div`

@@ -2,20 +2,20 @@ import React from 'react';
 
 import { styled } from 'theme';
 
-import CharacterCard from 'components/Card/CharacterCard';
 import {
-  HandleDeleteCharacter,
-  HandleToggleModal,
   CardItemType,
   HandleSetInitialForm,
-  HandleUpdateOneCharacter,
+  HandleDeleteCharacter,
   HandleFilterCharacters,
+  HandleToggleModal,
+  HandleUpdateOneCharacter,
 } from 'store/domains';
 
-
-import { InputFieldType } from 'types';
-import UpdateCard from './UpdateCard';
+import CharacterCard from './CharacterCard';
 import FilterCard from './FilterCard';
+import UpdateCard from './UpdateCard';
+
+import { InputFieldType } from 'types'
 
 const Wrapper = styled.div`
   margin: 0 150px 0 150px;

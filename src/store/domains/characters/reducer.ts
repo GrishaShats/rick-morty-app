@@ -12,7 +12,24 @@ export const charactersInitialState: ImmutableObject<CharactersState> = Immutabl
     },
     results: [],
   },
-  characterOverview: {},
+  characterOverview: {
+    id: 0,
+    name: '',
+    status: '',
+    species: '',
+    type: '',
+    gender: '',
+    origin: {
+      name: '',
+      url: '',
+    },
+    location: {
+      name: '',
+      url: '',
+    },
+    image: '',
+    episode: [],
+  },
   filterOptions: {
     [FilterOptionConsts.TYPE_PROP]: 'name',
     [FilterOptionConsts.VALUE_PROP]: '',
@@ -38,8 +55,8 @@ const charactersReducer = (
       return state.setIn(['filterOptions', action.value.type], action.value.inputValue);
     }
     case ActionTypeKeys.DELETE_CHARACTER: {
-      const data = state.data.results.filter(item => item.id !== action.value);
-      return state.setIn(['data', 'results'], data);
+      const newData = state.data.results.filter(item => item.id !== action.value);
+      return state.setIn(['data', 'results'], newData);
     }
 
     default:

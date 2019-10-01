@@ -11,12 +11,12 @@ import {
 
   CharactersActionTypeKeys,
 
-  handleGettingAllCharacters,
-  handleUpdateOneCharacter,
   handleDeleteCharacter,
+  handleFilterCharacters,
+  handleGettingAllCharacters,
   handleSetInitialForm,
   handleToggleModal,
-  handleFilterCharacters,
+  handleUpdateOneCharacter,
 
   selectFilterCharacters,
   selectIsOpenModal,
@@ -35,12 +35,12 @@ const mapStateToProps = (state: StoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    handleGettingAllCharacters,
-    handleUpdateOneCharacter,
     handleDeleteCharacter,
-    handleToggleModal,
-    handleSetInitialForm,
     handleFilterCharacters,
+    handleGettingAllCharacters,
+    handleSetInitialForm,
+    handleToggleModal,
+    handleUpdateOneCharacter,
   },
   dispatch,
 );

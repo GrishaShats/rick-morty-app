@@ -6,7 +6,6 @@ import {
   GetOneCharacterAction,
   UpdateCharacterAction,
   DeleteCharacterAction,
-  SetInitialFormAction,
   SetCharacterFilterOptionAction,
 } from './actionTypes';
 import { Thunk, VoidPromiseThunk } from 'types';
@@ -35,7 +34,6 @@ export type DeleteCharacter = (value: number) => DeleteCharacterAction;
 export type HandleDeleteCharacter = (value: number) =>
   Thunk<Promise<void>> | void;
 
-export type SetInitialForm = (value: number) => SetInitialFormAction;
 export type HandleSetInitialForm = (value: number) =>
   Thunk<Promise<void>> | void;
 
@@ -62,11 +60,6 @@ export const filterCharacter = (value: FilterInputField) => ({
 export const deleteCharacter = (value: number) => ({
   value,
   type: ActionTypeKeys.DELETE_CHARACTER,
-});
-
-export const setInitialForm = (value: number) => ({
-  value,
-  type: ActionTypeKeys.SET_INITIAL_FORM,
 });
 
 export const handleGettingAllCharacters: HandleGettingAllCharacters = () =>

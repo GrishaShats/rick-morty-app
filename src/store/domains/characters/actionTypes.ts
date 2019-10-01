@@ -15,8 +15,6 @@ export enum ActionTypeKeys {
   FILTER_CHARACTERS = 'characters/FILTER_CHARACTERS',
 
   DELETE_CHARACTER = 'characters/DELETE_CHARACTER',
-
-  SET_INITIAL_FORM = 'characters/SET_INITIAL_FORM',
 }
 
 export interface GetAllCharactersAction {
@@ -64,11 +62,6 @@ export interface DeleteCharacterAction {
   readonly type: ActionTypeKeys.DELETE_CHARACTER;
 }
 
-export interface SetInitialFormAction {
-  readonly value: number;
-  readonly type: ActionTypeKeys.SET_INITIAL_FORM;
-}
-
 export type CharactersActionTypes =
   | GetAllCharactersAction
   | GetAllCharactersFulfilledAction
@@ -78,5 +71,4 @@ export type CharactersActionTypes =
   | GetOneCharacterRejectedAction
   | UpdateCharacterAction
   | DeleteCharacterAction
-  | SetInitialFormAction
   | SetCharacterFilterOptionAction;

@@ -2,7 +2,6 @@ import { Props } from 'react-select/src/Select';
 import { StylesConfig } from 'react-select/src/styles';
 
 import { theme } from 'theme';
-import { RefreshControlComponent } from 'react-native';
 
 export interface CustomSelectProps extends Props {
   isCustomSingleValue?: boolean;

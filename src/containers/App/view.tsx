@@ -8,27 +8,27 @@ import Home from 'containers/Home';
 import CharacterPage from 'containers/CharacterPage';
 import CharacterManager from 'containers/CharacterManager';
 import {
-  HandleGettingAllCharacters,
   CardItemType,
-  HandleUpdateOneCharacter,
   HandleDeleteCharacter,
-  HandleToggleModal,
-  HandleSetInitialForm,
   HandleFilterCharacters,
+  HandleGettingAllCharacters,
+  HandleSetInitialForm,
+  HandleToggleModal,
+  HandleUpdateOneCharacter,
 } from 'store/domains';
 import { InputFieldType } from 'types';
 
 interface AppProps {
   characters: CardItemType[];
   isLoading: boolean;
-  handleGettingAllCharacters: HandleGettingAllCharacters;
-  handleUpdateOneCharacter: HandleUpdateOneCharacter;
-  handleDeleteCharacter: HandleDeleteCharacter;
-  handleToggleModal: HandleToggleModal;
-  handleSetInitialForm: HandleSetInitialForm;
-  handleFilterCharacters: HandleFilterCharacters;
   isModalOpen: boolean;
   filterSelectOptions: InputFieldType[];
+  handleDeleteCharacter: HandleDeleteCharacter;
+  handleFilterCharacters: HandleFilterCharacters;
+  handleGettingAllCharacters: HandleGettingAllCharacters;
+  handleSetInitialForm: HandleSetInitialForm;
+  handleToggleModal: HandleToggleModal;
+  handleUpdateOneCharacter: HandleUpdateOneCharacter;
 }
 
 const App: React.FC<AppProps> = ({

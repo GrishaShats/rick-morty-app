@@ -4,12 +4,12 @@ import Header from 'components/Header';
 import ListCard from 'components/Card/ListCard';
 
 import {
-  HandleSetInitialForm,
+  CardItemType,
   HandleDeleteCharacter,
+  HandleFilterCharacters,
+  HandleSetInitialForm,
   HandleToggleModal,
   HandleUpdateOneCharacter,
-  CardItemType,
-  HandleFilterCharacters,
 } from 'store/domains';
 
 import { InputFieldType } from 'types';
@@ -18,13 +18,13 @@ import { withSpinner } from 'components/Spinner/withSpinner';
 interface HomeProps {
   characters: CardItemType[];
   isLoading: boolean;
-  handleUpdateOneCharacter: HandleUpdateOneCharacter;
-  handleDeleteCharacter: HandleDeleteCharacter;
-  handleToggleModal: HandleToggleModal;
-  handleSetInitialForm: HandleSetInitialForm;
-  handleFilterCharacters: HandleFilterCharacters;
   isModalOpen: boolean;
   filterSelectOptions: InputFieldType[];
+  handleDeleteCharacter: HandleDeleteCharacter;
+  handleFilterCharacters: HandleFilterCharacters;
+  handleSetInitialForm: HandleSetInitialForm;
+  handleToggleModal: HandleToggleModal;
+  handleUpdateOneCharacter: HandleUpdateOneCharacter;
 }
 
 const LoadingListCard = withSpinner()(ListCard);

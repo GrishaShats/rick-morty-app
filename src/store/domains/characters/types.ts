@@ -6,18 +6,16 @@ export interface CardNameUrl {
 }
 
 export interface CardItemType {
-  id?: number;
-  name?: string;
-  status?: string;
-  species?: string;
+  id: number;
+  name: string;
+  status: string;
+  species: string;
   type?: string;
   gender?: string;
   origin?: CardNameUrl;
   location?: CardNameUrl;
   image?: string;
   episode?: string[];
-  value?: string;
-  label?: string;
 }
 
 export interface CharactersInfoType {

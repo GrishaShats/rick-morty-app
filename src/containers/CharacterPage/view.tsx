@@ -5,7 +5,7 @@ import { styled } from 'theme';
 import CharacterCard from 'components/Card/CharacterCard';
 import CharacterInfo from 'components/CharacterInfo';
 
-import { HandleGetOneCharacter, CardItemType } from 'store/domains';
+import { CardItemType, HandleGetOneCharacter } from 'store/domains';
 
 const Wrapper = styled.div`
   display: flex;

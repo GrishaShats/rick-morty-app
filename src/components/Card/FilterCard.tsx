@@ -2,10 +2,10 @@ import React from 'react';
 import { styled } from 'theme';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 
-import { InputField } from 'components/Form';
-import { HandleFilterCharacters, filterSelectOptions, FilterOptionConsts } from 'store/domains';
-import { SelectField } from 'components/Form/Select';
+import { InputField, SelectField } from 'components/Form';
+
 import { InputFieldType } from 'types';
+import { filterSelectOptions, FilterOptionConsts, HandleFilterCharacters } from 'store/domains';
 
 const Wrapper = styled.div`
   padding: 0 20px 0 20px;

@@ -2,8 +2,8 @@ import React from 'react';
 import { styled } from 'theme';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 
-import { ModalContainer } from 'components/Modal';
 import { InputField } from 'components/Form';
+import { ModalContainer } from 'components/Modal';
 import { HandleUpdateOneCharacter, HandleToggleModal } from 'store/domains';
 
 const Wrapper = styled.div`
