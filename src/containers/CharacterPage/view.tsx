@@ -25,7 +25,6 @@ const CharacterPage: React.FC<CharacterPageProps> = ({
   character,
   handleGetOneCharacter }) => {
   React.useEffect(() => {
-    console.log(match, 'fuck');
     handleGetOneCharacter(match.params.id);
   }, [])
   return (

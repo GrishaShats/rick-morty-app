@@ -2,6 +2,7 @@ import { Props } from 'react-select/src/Select';
 import { StylesConfig } from 'react-select/src/styles';
 
 import { theme } from 'theme';
+import { RefreshControlComponent } from 'react-native';
 
 export interface CustomSelectProps extends Props {
   isCustomSingleValue?: boolean;
@@ -22,7 +23,7 @@ export const customStyles: StylesConfig = {
   }),
   placeholder: (provided: React.CSSProperties) => ({
     ...provided,
-    color: 'black',
+    color: theme.blackColor,
     fontSize: '14px',
     lineHeight: '17px',
     textOverflow: 'ellipsis',
@@ -43,7 +44,7 @@ export const customStyles: StylesConfig = {
     borderRadius: '0 0 2px 2px',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: state.selectProps.invalid ? 'red' : 'black',
+    borderColor: state.selectProps.invalid ? theme.redColor : theme.blackColor,
     borderTop: '0',
   }),
   control: (provided: React.CSSProperties, state: SelectState) => {
@@ -61,13 +62,13 @@ export const customStyles: StylesConfig = {
       opacity: isDisabled ? 0.5 : 1,
       borderRadius: menuIsOpen ? '2px 2px 0 0' : '2px',
       borderColor: invalid ?
-        'red'
+        theme.redColor
         :
         (isFocused || menuIsOpen) ?
-          'black'
+          theme.blackColor
           :
-          'black',
-      backgroundColor: 'white',
+          theme.blackColor,
+      backgroundColor: theme.whiteColor,
       boxShadow: 'none',
       ['&:hover']: {
         borderColor: '0',
@@ -80,26 +81,26 @@ export const customStyles: StylesConfig = {
       ...provided,
       fontSize: '14px',
       lineHeight: '17px',
-      color: isCustomSingleValue ? 'black' : 'inherit',
+      color: isCustomSingleValue ? theme.blackColor : 'inherit',
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
   },
   multiValueLabel: (provided: React.CSSProperties) => ({
     ...provided,
-    color: 'black',
+    color: theme.blackColor,
     padding: '3px 5px',
     paddingRight: 2,
     fontWeight: 500,
   }),
   multiValue: (provided: React.CSSProperties) => ({
     ...provided,
-    backgroundColor: 'white',
+    backgroundColor: theme.whiteColor,
   }),
   multiValueRemove: (provided: React.CSSProperties) => ({
     ...provided,
     cursor: 'pointer',
     [':hover']: {
-      backgroundColor: 'white',
+      backgroundColor: theme.whiteColor,
       color: false,
     },
   }),

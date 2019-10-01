@@ -56,7 +56,6 @@ const FilterCard: React.FC<FilterCardAllProps> = ({
         <Field
           onChange={
             (_event: React.ChangeEvent, newData: string) => {
-              console.log(newData, 'filterInput');
               const value = {
                 type: FilterOptionConsts.VALUE_PROP,
                 inputValue: newData,
@@ -67,7 +66,7 @@ const FilterCard: React.FC<FilterCardAllProps> = ({
           className="input-field"
           id="input"
           name="input"
-          placeholder="Enter name of card"
+          placeholder="Enter value for filter"
           component={InputField}
           isRequired={true}
         />

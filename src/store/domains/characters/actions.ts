@@ -81,7 +81,6 @@ export const handleGettingAllCharacters: HandleGettingAllCharacters = () =>
 export const handleGetOneCharacter: HandleGetOneCharacter = id =>
   async dispatch => {
     try {
-
       await dispatch(getOneCharacter(id));
     } catch (error) {
       return Promise.reject(error);

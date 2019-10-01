@@ -32,7 +32,6 @@ const charactersReducer = (
       const data = state.data.results.map(item =>
         item.id === action.value.id ? action.value : item,
       );
-      console.log('data', data);
       return state.setIn(['data', 'results'], data);
     }
     case ActionTypeKeys.FILTER_CHARACTERS: {
@@ -40,7 +39,6 @@ const charactersReducer = (
     }
     case ActionTypeKeys.DELETE_CHARACTER: {
       const data = state.data.results.filter(item => item.id !== action.value);
-      console.log('data', data);
       return state.setIn(['data', 'results'], data);
     }
 
