@@ -13,7 +13,7 @@ export const sharedInputCss = css<InvalidProp>`
   outline: none;
   color: ${({ theme }) => theme.blackColor};
   border-radius: 2px;
-  border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.grayColor};
+  border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.blackColor};
 
   &:focus{
     border: solid 1px ${({ theme, invalid }) => invalid ? theme.redColor : theme.blackColor};

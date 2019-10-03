@@ -14,7 +14,7 @@ interface FooterProps {
   charactersLength: number;
 }
 
-const Footer: React.FC<FooterProps> = ({
+export const Footer: React.FC<FooterProps> = ({
   charactersLength,
 }) => {
   return (
@@ -23,5 +23,3 @@ const Footer: React.FC<FooterProps> = ({
     </Wrapper >
   );
 };
-
-export default Footer;

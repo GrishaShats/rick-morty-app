@@ -6,13 +6,7 @@ import CharacterCard from 'components/Card/CharacterCard';
 import CharacterInfo from 'components/CharacterInfo';
 
 import { CardItemType, HandleGetOneCharacter } from 'store/domains';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 25px;
-`;
+import { Flex } from '@rebass/grid';
 
 interface CharacterPageProps {
   match: any;
@@ -28,7 +22,7 @@ const CharacterPage: React.FC<CharacterPageProps> = ({
     handleGetOneCharacter(match.params.id);
   }, [])
   return (
-    <Wrapper>
+    <Flex flexWrap="wrap" justifyContent="center" m={25}>
       <CharacterCard
         id={character.id || 0}
         image={character.image || ''}
@@ -43,8 +37,7 @@ const CharacterPage: React.FC<CharacterPageProps> = ({
         location={character.location && character.location.name || ''}
         episode={character.episode && character.episode.length > 0 && character.episode[0] || ''}
       />
-
-    </Wrapper>
+    </Flex>
   );
 };
 

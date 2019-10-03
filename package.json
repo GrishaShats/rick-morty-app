@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rebass/grid": "^6.1.0",
     "@types/react-modal": "^3.8.3",
     "@types/react-select": "^3.0.4",
+    "@types/rebass__grid": "^6.0.5",
     "bootstrap": "^4.3.1",
     "connected-react-router": "^6.5.2",
     "node-sass": "^4.12.0",
@@ -17,6 +19,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-select": "^3.0.5",
+    "rebass": "^4.0.6",
     "redux": "^4.0.4",
     "redux-form": "^8.2.6",
     "redux-logger": "^3.0.6",

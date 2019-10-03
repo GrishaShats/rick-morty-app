@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex, Box } from '@rebass/grid';
 
 import { styled } from 'theme';
 
@@ -17,17 +18,6 @@ import UpdateCard from './UpdateCard';
 
 import { InputFieldType } from 'types'
 
-const Wrapper = styled.div`
-  margin: 0 150px 0 150px;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  .card-list {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-`;
 
 interface ListCardProps {
   characters: CardItemType[];
@@ -51,39 +41,43 @@ const ListCard: React.FC<ListCardProps> = ({
   filterSelectOptions }) => {
   return (
     <React.Fragment >
-      <Wrapper>
-        <FilterCard
-          handleFilterCharacters={handleFilterCharacters}
-          initialValues={{
-            select: filterSelectOptions[0],
-          }}
-        />
-        <div className="card-list">
-          {
-            characters && characters.map(item =>
-              [
-                <CharacterCard key={item.id}
-                  id={item.id || 0}
-                  image={item.image || ''}
-                  name={item.name || ''}
-                  status={item.status || ''}
-                  species={item.species || ''}
-                  handleToggleModal={handleToggleModal}
-                  handleDeleteCharacter={() => handleDeleteCharacter(item.id || 0)}
-                  handleSetInitialForm={() => handleSetInitialForm(item.id || 0)}
-                />,
-                <UpdateCard
-                  title="Update card"
-                  isModalOpen={isModalOpen}
-                  onCancel={() => handleToggleModal(false)}
-                  handleUpdateOneCharacter={handleUpdateOneCharacter}
-                  handleToggleModal={handleToggleModal}
-                />,
-              ],
-            )
-          }
-        </div>
-      </Wrapper >
+      <Flex flexDirection="column" width={["218px", , , 0.75]} mr="auto" ml="auto">
+        <Box>
+          <FilterCard
+            handleFilterCharacters={handleFilterCharacters}
+            initialValues={{
+              select: filterSelectOptions[0],
+            }}
+          />
+        </Box>
+        <Box>
+          <Flex flexWrap="wrap" justifyContent="space-between">
+            {
+              characters && characters.map(item =>
+                [
+                  <CharacterCard key={item.id}
+                    id={item.id || 0}
+                    image={item.image || ''}
+                    name={item.name || ''}
+                    status={item.status || ''}
+                    species={item.species || ''}
+                    handleToggleModal={handleToggleModal}
+                    handleDeleteCharacter={() => handleDeleteCharacter(item.id || 0)}
+                    handleSetInitialForm={() => handleSetInitialForm(item.id || 0)}
+                  />,
+                  <UpdateCard
+                    title="Update card"
+                    isModalOpen={isModalOpen}
+                    onCancel={() => handleToggleModal(false)}
+                    handleUpdateOneCharacter={handleUpdateOneCharacter}
+                    handleToggleModal={handleToggleModal}
+                  />,
+                ],
+              )
+            }
+          </Flex>
+        </Box>
+      </Flex>
     </React.Fragment >
   );
 };

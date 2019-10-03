@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Menu from 'components/Menu';
-import Footer from 'components/Footer';
 
 import Home from 'containers/Home';
 import CharacterPage from 'containers/CharacterPage';
@@ -62,6 +61,7 @@ const App: React.FC<AppProps> = ({
               handleFilterCharacters={handleFilterCharacters}
               isModalOpen={isModalOpen}
               filterSelectOptions={filterSelectOptions}
+              charactersLength={characters.length}
             />
           )}
         />
@@ -69,8 +69,6 @@ const App: React.FC<AppProps> = ({
         <Route path="/manager" component={CharacterManager} />
         <Redirect from='*' to='/' />
       </Switch>
-      <Footer
-        charactersLength={characters.length} />
     </React.Fragment>
   );
 };

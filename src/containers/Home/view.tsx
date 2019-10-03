@@ -14,6 +14,7 @@ import {
 
 import { InputFieldType } from 'types';
 import { withSpinner } from 'components/Spinner/withSpinner';
+import { withFooter } from 'components/Footer';
 
 interface HomeProps {
   characters: CardItemType[];
@@ -58,4 +59,4 @@ const Home: React.FC<HomeProps> = ({
   );
 };
 
-export default (Home);
+export default withFooter(Home);

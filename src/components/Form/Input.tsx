@@ -25,7 +25,7 @@ export const DefaultInput = styled.input<InputCommonProps>`
     padding: 0;
 
     ::placeholder {
-      color: ${theme.grayColor};
+      color: ${theme.blackColor};
     }
 
     :disabled {

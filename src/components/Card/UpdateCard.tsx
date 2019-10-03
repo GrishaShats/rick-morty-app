@@ -8,10 +8,6 @@ import { HandleUpdateOneCharacter, HandleToggleModal } from 'store/domains';
 
 const Wrapper = styled.div`
   width: 100%;
-
-  .save-discard {
-    justify-content: space-between;
-  }
 `;
 
 export interface UpdateCardProps {

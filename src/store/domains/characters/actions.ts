@@ -1,4 +1,5 @@
 import * as api from './api';
+import { initialize } from 'redux-form';
 
 import {
   ActionTypeKeys,
@@ -8,11 +9,12 @@ import {
   DeleteCharacterAction,
   SetCharacterFilterOptionAction,
 } from './actionTypes';
+
+import { InitialFormFieldsType, CardItemType, FilterInputField } from './types';
+import { selectAllCharacters } from './selectors';
+
 import { Thunk, VoidPromiseThunk } from 'types';
 
-import { selectAllCharacters } from './selectors';
-import { initialize } from 'redux-form';
-import { InitialFormFieldsType, CardItemType, FilterInputField } from './types';
 
 export type GetAllCharacters = () => GetAllCharactersAction;
 export type HandleGettingAllCharacters = VoidPromiseThunk;

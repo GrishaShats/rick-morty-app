@@ -1,15 +1,15 @@
 import React from 'react';
 
 import { styled } from 'theme';
+import { Flex, Box } from '@rebass/grid';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  margin: 20px;
+  max-width: 600px;
+  width:100%;
   .info-field{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px 10px;
     border-bottom: 1px solid ${({ theme }) => theme.grayColor};
     border-right: 1px solid ${({ theme }) => theme.grayColor};
@@ -39,48 +39,50 @@ const CharacterInfo: React.FC<CharacterInfoProps> = ({
 
   return (
     <Wrapper className='card-wrapper'>
-      <div className='info-field'>
-        <div>
-          <span>Type</span>
-        </div>
-        <span>{type ? type : 'Unknown'}</span>
-      </div>
-
-      <div>
-        <div className='info-field'>
+      <Flex flexDirection="column" m={20}>
+        <Box className='info-field'>
           <div>
-            <span>Gender</span>
+            <span>Type</span>
           </div>
-          <span>{gender}</span>
-        </div>
-      </div>
+          <span>{type ? type : 'Unknown'}</span>
+        </Box>
 
-      <div>
-        <div className='info-field'>
-          <div>
-            <span>Оrigin</span>
+        <Box>
+          <div className='info-field'>
+            <div>
+              <span>Gender</span>
+            </div>
+            <span>{gender}</span>
           </div>
-          <span>{origin}</span>
-        </div>
-      </div>
+        </Box>
 
-      <div>
-        <div className='info-field'>
-          <div>
-            <span>Location</span>
+        <Box>
+          <div className='info-field'>
+            <div>
+              <span>Оrigin</span>
+            </div>
+            <span>{origin}</span>
           </div>
-          <span>{location}</span>
-        </div>
-      </div>
+        </Box>
 
-      <div>
-        <div className='info-field'>
-          <div>
-            <span>Episode</span>
+        <Box>
+          <div className='info-field'>
+            <div>
+              <span>Location</span>
+            </div>
+            <span>{location}</span>
           </div>
-          <span>{episode}</span>
-        </div>
-      </div>
+        </Box>
+
+        <Box>
+          <div className='info-field'>
+            <div>
+              <span>Episode</span>
+            </div>
+            <span>{episode.split('https://rickandmortyapi.com/api/episode/')}</span>
+          </div>
+        </Box>
+      </Flex>
     </Wrapper>
   );
 };
